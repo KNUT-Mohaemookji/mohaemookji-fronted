@@ -21,7 +21,7 @@ export default {
     }
     @media screen and (max-width: 768px){
         .text{
-            top: 400px;
+            /* top: 400px; */
         }
     }
 </style>

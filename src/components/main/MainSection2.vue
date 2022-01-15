@@ -2,7 +2,7 @@
 <div class="section2">
   <div class="inner">
       <!-- <h1 class="text">Different kinds of food!</h1> -->
-      <h1 class="text">{{$store.state.text}}</h1>
+      <h1 class="text">{{text}}</h1>
       <div class="imgs">
           <div v-for="a, i in 4" :key="i" class="img" :style="{backgroundImage: `url(${foodImg[i]})`}">
               <div class="imgText">
@@ -19,8 +19,8 @@ export default {
     data(){
         return{
             // \u00a0는 공백을 주는 기능이다.
-            text:['D','i', 'f','f','e','r','e','n', 't','\u00a0' ,'k', 'i', 'n', 'd','s','\u00a0', 'o','f', '\u00a0', 'f','o','o','d','!'],
-            kinds: ['Meal', 'Diet', 'Exercise', 'Snack'],
+            // text:['D','i', 'f','f','e','r','e','n', 't','\u00a0' ,'k', 'i', 'n', 'd','s','\u00a0', 'o','f', '\u00a0', 'f','o','o','d','!'],
+            // kinds: ['Meal', 'Diet', 'Exercise', 'Snack'],
             foodImg: [
                 'https://user-images.githubusercontent.com/76980526/148056682-21d0c8c7-1e64-4946-8904-a4ea38b712cc.jpeg',
                 'https://user-images.githubusercontent.com/76980526/148056717-fd28767a-8bc9-4871-abbe-943c5afb2c27.jpeg',
@@ -28,6 +28,10 @@ export default {
                 'https://user-images.githubusercontent.com/76980526/148057274-9c53c69f-fa28-49ac-bfb6-062b546a1504.jpeg'
             ]
         }
+    },
+    props:{
+        text: String,
+        kinds: String,
     },
     mounted(){
         this.typeWrite();

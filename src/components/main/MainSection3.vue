@@ -15,17 +15,12 @@
 export default {
     data(){
         return{
-            icons: [
-                'fas fa-home',
-                'fas fa-users',
-                'fas fa-cookie'
-            ],
-            iconText: [
-                'Anwhere!',
-                'Together!',
-                'Cooking!'
-            ]
+            
         }
+    },
+    props:{
+        icons: String,
+        iconText: String,
     }
 
 }
@@ -60,18 +55,20 @@ export default {
     font-weight: 700;
     margin-top: -30px;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1100px){
     .mainSection3{
         width: 100vw;
     }
     .icons{
         display: block;
     }
+}
+@media screen and (max-width: 768px){
     .icons i{
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         font-size: 40px;
-        padding-top: 40px;
+        padding-top: 30px;
     }
     .text{
         font-size: 20px;
