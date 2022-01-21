@@ -1,18 +1,21 @@
 <template>
     <div class="main">  
-        <div class="videoTop">
-            <div class="videoTypes">
-                <ul>
-                    <li class="videoType"
-                        v-for="a, i in videoType" :key="i">{{videoType[i]}}</li>
-                </ul>
+        <Loader v-if="$store.state.loading == true"/>
+        <div v-else>
+            <div class="videoTop">
+                <div class="videoTypes">
+                    <ul>
+                        <li class="videoType"
+                            v-for="a, i in videoType" :key="i">{{videoType[i]}}</li>
+                    </ul>
+                </div>
             </div>
+            <div class="inner">
+                <Videos/>
+                <!-- <Footer class="footer"/> -->
+            </div>
+            <VideoModal class="videoModal"/>
         </div>
-        <div class="inner">
-            <Videos/>
-            <!-- <Footer class="footer"/> -->
-        </div>
-        <VideoModal class="videoModal"/>
     </div>
 </template>
 
@@ -20,11 +23,13 @@
 import Videos from './videoList/Videos.vue'
 import VideoModal from './videoList/VideoModal.vue'
 import Footer from '../components/Footer.vue'
+import Loader from '../components/Loader.vue'
 export default {
     components:{
         Videos,
         VideoModal,
         Footer,
+        Loader,
     },
     data(){
         return{
@@ -32,6 +37,9 @@ export default {
                 'All', 'Meal', 'Diet', 'Exercise', 'Snack'
             ]
         }
+    },
+    mounted(){
+        
     },
 }
 </script>

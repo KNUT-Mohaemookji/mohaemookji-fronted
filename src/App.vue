@@ -16,8 +16,8 @@ export default {
   data(){
     return{
       // HEADER 부분
-      menuList:['Home', 'Video', 'About'],
-      mainUrl: ['/','/videoList', '/about', ''],
+      menuList:['Home', 'Video', 'Mart', 'About'],
+      mainUrl: ['/','/videoList', '/MartMain', '/about'],
       userUrl: ['/login', '/mypage', '/favorite'],
       menuOpen: false,
     }

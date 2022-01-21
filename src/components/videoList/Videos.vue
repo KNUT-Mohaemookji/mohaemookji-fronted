@@ -82,6 +82,8 @@ export default {
         flex-wrap: wrap;
     }
     .videoBox{
+        position: relative;
+        left: 20px;
         margin: auto;
         width: 300px;
         height: 350px;
@@ -95,8 +97,14 @@ export default {
         height: 200px;
         border-radius: 10px;
         background-size: cover;
+        transition: .3s;
         background-position: center;
         cursor: pointer;
+    }
+    .video:hover{
+        width: 120%;
+        margin-left: -30px;
+        /* background-size: 120%; */
     }
     /* .movieExplanation{
         display: flex;
@@ -145,12 +153,13 @@ export default {
             width: 100%;
             height: 60%;
         }
+        .video:hover{
+            width: 100%;
+            margin-left: 0px;
+        }
         .footer{
             /* position: absolute;
             top: 10px; */
-        }
-        .videoTitle{
-            
         }
     }
 </style>

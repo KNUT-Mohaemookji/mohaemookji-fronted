@@ -14,8 +14,8 @@
             </div>
             <br/>
             <ul class="join">
-                <li v-for="a in login" :key="a">
-                    <router-link to="/login/join">{{a}}</router-link>
+                <li v-for="a, i in login" :key="i">
+                    <router-link :to = url[i]>{{a}}</router-link>
                 </li>
             </ul>
           </form>
@@ -28,9 +28,14 @@ export default {
     data(){
         return{
             login: [
+                '회원가입',
                 '아이디 찾기',
-                '비밀번호 찾기',
-                '회원가입'
+                '비밀번호 찾기'
+            ],
+            url:[
+                '/login/join',
+                '/login/searchId',
+                '/login/searchPw',
             ]
         }
     }
@@ -88,6 +93,11 @@ export default {
     width: 70%;
     height: 5%;
     cursor: pointer;
+}
+.submit{
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    border: 0;
 }
 .kakao{
     background-color: rgb(255, 251, 0);

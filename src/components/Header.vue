@@ -166,6 +166,7 @@ export default {
     }
     .menuListIcon{
         position: relative;
+        cursor: pointer;
         z-index: 100;
         padding: 30px;
         width: 75px;
@@ -174,6 +175,7 @@ export default {
     }
     .line{
         width: 30px;
+        cursor: pointer;
         position: absolute;
         border-bottom: 5px solid #333;
     }
@@ -214,10 +216,14 @@ export default {
     }
     .mobileMenu ul li{
         font-size: 20px;
+        cursor: pointer;
         font-weight: 700;
-        margin: 70px 0px;
+        margin: 80px 0px;
     }
     @media screen and (max-width: 800px){
+        .header2{
+            height: 80px;
+        }
         .menuList{
             display: none;
         }

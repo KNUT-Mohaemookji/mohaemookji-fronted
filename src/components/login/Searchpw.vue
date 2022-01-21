@@ -1,20 +1,18 @@
 <template>
-    <div class="inner">
+  <div class="inner">
         <div class="joinBox">
             <p>Mohaemookgi</p>
             <form action="/join" method="post">
+                이름
+                <input class="id" type="text" placeholder="이름입력.">
+                <br/><br/>
                 아이디
                 <input class="id" type="text" placeholder="아이디 입력(5~11자)">
-                <br/><br/>
-                비밀번호
-                <input class="pw" type="password" placeholder="비밀번호 입력">
-                <br/><br/>
-                <input class="pw" type="password" placeholder="비밀번호 확인">
                 <br/><br/>
                 이메일
                 <input class="email" type="emain" placeholder="이메일 입력"/>
                 <br/><br/>
-                <input class="submit" type="submit" value="회원가입!">
+                <input class="submit" type="submit" value="완료">
             </form>
         </div>
     </div>
