@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 
 import videoData from '../data/video.json'
 import martData from '../data/mart.json'
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -60,6 +61,12 @@ const store = new Vuex.Store({
         // 마트관련 데이터
         martData(state){
             state.towns.sort(); // 가나다순 정렬.
+            let martData = state.martData.town.연수동;
+            martData.map(a => {
+                state.townList.push(a.name)
+            })
+            console.log(1)
+            console.log($route.params.id);
         }
     },
     actions: {

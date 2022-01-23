@@ -13,6 +13,8 @@ import SearchPw from '@/components/login/SearchPw'
 
 // 마트 찾는거 관련 페이지
 import MartMain from '@/components/martLocation/MartMain'
+import MartLocation from '@/components/martLocation/MartLocation'
+
 import store from '../store'
 
 Vue.use(Router)
@@ -49,6 +51,11 @@ const router = new Router({
       path: '/martMain',
       name: 'MartMain',
       component: MartMain
+    },
+    {
+      path: '/martMain/:id',
+      name: 'MartLocation',
+      component: MartLocation
     },
     {
       // url에 /:뒤에 위의 객체 안에 정의된 url이 없으면 404페이지를 보여줌.
