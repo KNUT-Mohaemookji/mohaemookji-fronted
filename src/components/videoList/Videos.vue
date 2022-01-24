@@ -32,10 +32,10 @@ export default {
         data: Object,
     },
     computed: {
-        ...mapState(['videoImg', 'videoTitle', 'profileImg', 'profileName'])
+        ...mapState('video', ['videoImg', 'videoTitle', 'profileImg', 'profileName'])
     },
     mounted(){
-        this.$store.commit('movieData')
+        this.$store.commit('video/movieData')
         // this.videoData();
     },
     methods: {
@@ -43,7 +43,7 @@ export default {
             console.log(this.$store.state.video[this.$store.state.count])
         },
         videoData(){
-            let data = this.$store.state.videoData;
+            let data = this.$store.state.video.videoData;
             // axios.get('/data.json').then(a => {
             //     console.log(a); 
                 // this.$store.state.videoImg.push(a.thumnail);
@@ -53,14 +53,6 @@ export default {
             //     console.log(err)
             //     console.log('..')
             // })
-            data.map(a => {
-                console.log(a)
-                this.$store.state.videoImg.push(a.thumbnail);
-                this.$store.state.videoTitle.push(a.title);
-                this.$store.state.video.push(a.url);
-                this.$store.state.profileImg.push(a.profile);
-                this.$store.state.profileName.push(a.channelId);
-            })
         },
         textControl(){
             // video에 특정 text의 길이가 20개 이상이면 나머지 text들을 ...으로 표시해주기.
@@ -69,8 +61,8 @@ export default {
         // 인자 count는 클릭한 데이터가 몇번째 순서에 있는지 나타내줌.
         modalData(count){
             // 첫번째 데이터를 누르면 첫번째 데이터의 내용들이 모달창에 뜨도록 하기
-            this.$store.state.modalState = true // modal창을 띄워주고,
-            this.$store.state.count = count; // store에 있는 count에 클릭한 index 위치를 보내준다.
+            this.$store.state.video.modalState = true // modal창을 띄워주고,
+            this.$store.state.video.count = count; // store에 있는 count에 클릭한 index 위치를 보내준다.
         }
     }
 }

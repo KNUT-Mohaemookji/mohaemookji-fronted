@@ -29,10 +29,10 @@ export default {
         }
     },
     mounted(){
-        this.$store.commit('martData');
+        this.$store.commit('town/martData');
     },
     computed: {
-        ...mapState(['townList'])
+        ...mapState('town', ['townList'])
     },
 }
 </script>

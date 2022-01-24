@@ -5,7 +5,7 @@
             <div class="towns">
                 <!--innerText로 버튼에 클릭한 text를 가져와서 urlReplace()의 인자로 넣어주기-->
                 <button @click="urlReplace($event.target.innerText)"
-                class="town" v-for="townList in $store.state.towns" :key="townList">
+                class="town" v-for="townList in $store.state.town.towns" :key="townList">
                     {{townList}}
                 </button>
             </div>
@@ -17,7 +17,7 @@
 // import martData from '@/data/mart.json'
 export default {
     mounted(){
-        this.$store.commit('martData');
+        this.$store.commit('town/martData');
         this.textEvent();
     },
     methods: {
@@ -29,7 +29,7 @@ export default {
             }, 100);
         },
         urlReplace(url){
-            for(var i = 0; i < this.$store.state.towns.length; i++){
+            for(var i = 0; i < this.$store.state.town.towns.length; i++){
                 window.location.replace(`MartMain/${url}`);  
                 console.log(url); 
             }

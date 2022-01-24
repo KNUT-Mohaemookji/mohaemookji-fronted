@@ -1,7 +1,7 @@
 <template>
-<div class="body" v-if="$store.state.modalState">
+<div class="body" v-if="$store.state.video.modalState">
     <div class="blackBg"
-    @click="$store.state.modalState = false">
+    @click="$store.state.video.modalState = false">
     </div>
     <div class="container">
         <!-- <div class="movie" :style="{backgroundImage: `url(${$store.state.video[$store.state.count]})`}"/> -->
@@ -26,7 +26,7 @@
 import {mapState} from 'vuex'
 export default {
     computed: {
-        ...mapState(['count', 'videoTitle', 'video', 'videoImg', 'profileImg', 'profileName', 'movieDetail'])
+        ...mapState('video', ['count', 'videoTitle', 'video', 'videoImg', 'profileImg', 'profileName', 'movieDetail'])
     }
 }
 </script>
@@ -58,8 +58,9 @@ export default {
         padding: 0px 20px;
     }
     .movie{
-        margin: 20px 20px;
-        width: 95%;
+        margin-top: 20px;
+        width: 100%;
+        aspect-ratio: 16/9;
         height: 60%;
         border: 1px solid #333;
     }
