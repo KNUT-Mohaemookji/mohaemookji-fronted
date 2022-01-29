@@ -33,7 +33,8 @@ export default {
             // imageSrc.style.borderRadius = '50%';
 
             var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-                markerPosition = new kakao.maps.LatLng(36.963388228024755, 127.87039923648587); // 마커가 표시될 위치입니다
+                // 마커가 표시될 위치입니다
+                markerPosition = new kakao.maps.LatLng(36.963388228024755, 127.87039923648587);
 
             var marker = new kakao.maps.Marker({
                 position: markerPosition,

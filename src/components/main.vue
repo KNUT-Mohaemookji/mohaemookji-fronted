@@ -6,6 +6,7 @@
       <MainSection2
       :text = "text"
       :kinds = "kinds"/>
+      <MainSection3/>
       <MainLastSection
       :icons = "icons"
       :iconText = "iconText"/>
@@ -19,6 +20,7 @@
 // import Header from './Header.vue'
 import MainSection1 from './main/MainSection1.vue'
 import MainSection2 from './main/MainSection2.vue'
+import MainSection3 from './main/MainSection3.vue'
 import MainLastSection from './main/MainLastSection.vue'
 import Footer from '../components/Footer.vue'
 export default {
@@ -50,6 +52,7 @@ export default {
     // Header,
     MainSection1,
     MainSection2,
+    MainSection3,
     MainLastSection,
     Footer,
   }
