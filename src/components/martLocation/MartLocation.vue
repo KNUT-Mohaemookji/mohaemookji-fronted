@@ -113,4 +113,19 @@ export default {
     font-weight: 500;
     font-size: 20px;
 }
+@media screen and (max-width: 768px){
+    .contain{
+        width: 600px;
+    }
+    .marts{
+        display: block;
+    }
+    #map{
+        width: 100%;
+    }
+    .martList{
+        width: 100%;
+        margin: 30px 0px 0px;
+    }
+}
 </style>
