@@ -20,11 +20,6 @@ export default {
         this.$store.commit('town/martData');
         this.textEvent();
     },
-    data(){
-        return{
-            a: ['1', '2', '3', '4', '5'],
-        }
-    },
     methods: {
         textEvent(){
             let mainText = document.querySelector('.mainText');
@@ -33,9 +28,6 @@ export default {
             }, 100);
         },
         urlReplace(url){ // 인자에 버튼의 text 값이 들어가면 
-
-            let a = ['1', '2', '3', '4', '6'];
-
             let townList = Object.keys(this.$store.state.town.martData.towns)
             townList.sort()
             // url을 누른 버튼 안에 text 값으로 변경시켜준다.

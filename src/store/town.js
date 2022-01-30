@@ -11,11 +11,13 @@ const town = {
         ysd: '연수동',
         townList: [],
         townLocation: 0,
+        a: '1'
     },
     mutations: {
         townList(state, data){
             let btnClick = [...state.towns] // towns를 가져옴.
             state.townLocation = btnClick.indexOf(data); // 버튼을 클릭한 index 값 가져옴.
+            console.log(state.martData.towns[state.townLocation])
         },
     }
 }

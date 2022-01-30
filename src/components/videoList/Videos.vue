@@ -54,10 +54,6 @@ export default {
             //     console.log('..')
             // })
         },
-        textControl(){
-            // video에 특정 text의 길이가 20개 이상이면 나머지 text들을 ...으로 표시해주기.
-        },
-        
         // 인자 count는 클릭한 데이터가 몇번째 순서에 있는지 나타내줌.
         modalData(count){
             // 첫번째 데이터를 누르면 첫번째 데이터의 내용들이 모달창에 뜨도록 하기
