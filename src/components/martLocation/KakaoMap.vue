@@ -19,7 +19,6 @@ export default {
         this.kakaoMap();
     },
     methods: {
-        // 36.96994247559955, 127.87126855364261
         kakaoMap(){
             // martLocation에 마트 데이터 넣어주기
             this.martLocation = this.martData.towns[this.townLocation]

@@ -62,7 +62,6 @@ export default {
     margin: auto;
     width: 1100px;
     height: 100vh;
-    /* background-color: beige; */
 }
 .townName{
     font-size: 50px;
