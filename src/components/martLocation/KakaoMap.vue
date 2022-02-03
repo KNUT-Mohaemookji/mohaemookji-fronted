@@ -10,8 +10,6 @@ export default {
             logoImg: "https://user-images.githubusercontent.com/76980526/148074503-94784be9-47a4-41cc-9fa5-bf88c79b2b18.jpeg",
             martLocation: [],
             martTitle: '',
-            abc: 'abc',
-
         }
     },
     computed: {
@@ -56,7 +54,7 @@ export default {
                 let positions = 
                 {
                     // title: `<div>${martTitle[i]}</div>`,
-                    title: `<div style = "
+                    title: `<div class = "abc" style = "
                     padding: 3px;
                     color: #333;
                     font-weight: 500;
@@ -107,9 +105,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.martTitle{
-    background-color: #333;
-}
-</style>

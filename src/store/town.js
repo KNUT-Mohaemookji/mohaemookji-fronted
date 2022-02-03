@@ -1,5 +1,3 @@
-// import martData from '../data/mart.json'
-
 const town = {
     namespaced: true,
     state: {

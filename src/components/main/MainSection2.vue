@@ -15,11 +15,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     data(){
         return{
             // \u00a0는 공백을 주는 기능이다.
-            // text:['D','i', 'f','f','e','r','e','n', 't','\u00a0' ,'k', 'i', 'n', 'd','s','\u00a0', 'o','f', '\u00a0', 'f','o','o','d','!'],
             // kinds: ['Meal', 'Diet', 'Exercise', 'Snack'],
             foodImg: [
                 'https://user-images.githubusercontent.com/76980526/148056682-21d0c8c7-1e64-4946-8904-a4ea38b712cc.jpeg',
@@ -29,8 +29,11 @@ export default {
             ]
         }
     },
+    computed:{
+        ...mapState('main', ['text'])
+    },
     props:{
-        text: String,
+        // text: String,
         kinds: String,
     },
     mounted(){

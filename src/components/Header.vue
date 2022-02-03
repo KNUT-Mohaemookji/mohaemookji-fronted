@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     data(){
         return{
@@ -42,6 +43,9 @@ export default {
                 'favorite!',
             ],
         }
+    },
+    computed:{
+        ...mapState('main',['text'])
     },
     props:{
         menuList: String,
@@ -98,7 +102,6 @@ export default {
                         loginMenuLi[i].style.color = 'rgb(247, 225, 57)';
                     }
                 }
-                // console.log(document.documentElement.scrollTop);  
             })
         },
     }
