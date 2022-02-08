@@ -10,22 +10,59 @@ export default {
             logoImg: "https://user-images.githubusercontent.com/76980526/148074503-94784be9-47a4-41cc-9fa5-bf88c79b2b18.jpeg",
             martLocation: [],
             martTitle: '',
+            currentLatitude: 0,
+            currentLongitude: 0,
         }
     },
     computed: {
         ...mapState('town', ['martData','townList', 'townLocation'])
     },
+    // async, await 개념 적용하기. (위치를 찾기 전에 결과를 출력하기 때문에 잠시 멈춤 현상이 발생.
+    // 그러므로 위치 찾을 때 까지 정지했다가 위치를 찾아주면 위치를 표시하는 시긍로 하기.)
+    // mounted에서 kakaoMap실행 전 currentLocation이 실행이 되면 kakaoMap이 띄워지도록 하기.
     mounted(){
         // kakao에 url 중 동네 정보를 인자에 담아주기.
-        this.kakaoMap();
+        this.currentLocation();
+        setTimeout(() => {
+            this.kakaoMap();
+        }, 5000);
     },
     methods: {
+        // 현재 자신의 위치를 알려줌.
+        async currentLocation(){
+            let latitude = 0 
+            let longitude = 0;
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(function(position){
+                    alert(position.coords.latitude + ' ' + position.coords.longitude);
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    
+                }, function(error){
+                    console.log(error);
+                }, {
+                    enableHighAccuracy: false,
+                    maximumAge: 0,
+                    timeout: Infinity
+                });
+            }else{
+                alert('GPS를 지원하지 않습니다.');
+            }
+            setTimeout(() => {
+                this.currentLatitude = latitude;
+                this.currentLongitude = longitude;
+                console.log("현재 위치에서 위도는 " + this.currentLatitude + "경도는 : " + this.currentLongitude);
+            }, 4000);
+        },
         kakaoMap(){
             // martLocation에 마트 데이터 넣어주기
             this.martLocation = this.martData.towns[this.townLocation]
 
             var mapContainer = document.getElementById('map');
             var mapOptions = {
+                // 현재위치 적용 완료.
+                // center: new kakao.maps.LatLng(this.currentLatitude, this.currentLongitude),
+                // level: 3
                 center: new kakao.maps.LatLng(36.97119012428337, 127.92837941506313),
                 level: 7
             };
@@ -84,11 +121,6 @@ export default {
                 kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infoWindow));
                 kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infoWindow));;
             }
-            // var customOverlay = new kakao.maps.CustomOverlay({
-            //         position: marker.position,
-            //         content: positions.title
-            //     })
-            // customOverlay.setMap(map);
             // 인포윈도우를 표시하는 클로저를 만드는 함수.
             function makeOverListener(map, marker, infowindow){
                 return function(){

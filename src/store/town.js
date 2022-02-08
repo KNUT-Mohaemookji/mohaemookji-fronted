@@ -8,7 +8,6 @@ const town = {
         ],
         townList: [],
         townLocation: 0,
-        a: '1'
     },
     mutations: {
         townList(state, data){
@@ -16,7 +15,12 @@ const town = {
             state.townLocation = btnClick.indexOf(data); // 버튼을 클릭한 index 값 가져옴.
             console.log(state.martData.towns[state.townLocation])
         },
-    }
+        // 현재 자신의 위치를 나타내줌.
+        // currentLocation(state, data){
+        //     if(navigator)
+        // }
+    },
+
 }
 
 export default town
