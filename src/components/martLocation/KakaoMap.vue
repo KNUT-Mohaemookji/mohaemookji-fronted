@@ -1,5 +1,7 @@
 <template>
-  <div id="map"/>
+  <div id="map">
+      <button class="currentLocation">내 위치</button>
+  </div>
 </template>
 
 <script>
@@ -17,44 +19,52 @@ export default {
     computed: {
         ...mapState('town', ['martData','townList', 'townLocation'])
     },
-    // async, await 개념 적용하기. (위치를 찾기 전에 결과를 출력하기 때문에 잠시 멈춤 현상이 발생.
-    // 그러므로 위치 찾을 때 까지 정지했다가 위치를 찾아주면 위치를 표시하는 시긍로 하기.)
-    // mounted에서 kakaoMap실행 전 currentLocation이 실행이 되면 kakaoMap이 띄워지도록 하기.
     mounted(){
-        // kakao에 url 중 동네 정보를 인자에 담아주기.
-        this.currentLocation();
-        setTimeout(() => {
-            this.kakaoMap();
-        }, 5000);
+        this.currentLocation()
     },
     methods: {
         // 현재 자신의 위치를 알려줌.
-        async currentLocation(){
+        currentLocation(){
             let latitude = 0 
             let longitude = 0;
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(function(position){
-                    alert(position.coords.latitude + ' ' + position.coords.longitude);
-                    latitude = position.coords.latitude;
-                    longitude = position.coords.longitude;
-                    
-                }, function(error){
-                    console.log(error);
-                }, {
-                    enableHighAccuracy: false,
-                    maximumAge: 0,
-                    timeout: Infinity
-                });
-            }else{
-                alert('GPS를 지원하지 않습니다.');
+            function watchMap(){
+                return new Promise((resolve, reject) => {
+                    if(navigator.geolocation){
+                        navigator.geolocation.getCurrentPosition(function(position){
+                            alert(position.coords.latitude + ' ' + position.coords.longitude);
+                            latitude = position.coords.latitude;
+                            longitude = position.coords.longitude;
+                            resolve('성공!');
+                        }, function(error){
+                            console.log(error);
+                        }, {
+                            enableHighAccuracy: false,
+                            maximumAge: 0,
+                            timeout: Infinity
+                        });
+                    }else{
+                        alert('GPS를 지원하지 않습니다.');
+                        reject('실패..')
+                    }
+                })
             }
-            setTimeout(() => {
+            watchMap()
+            .then((res) => {
                 this.currentLatitude = latitude;
                 this.currentLongitude = longitude;
+                this.currentLocation();
                 console.log("현재 위치에서 위도는 " + this.currentLatitude + "경도는 : " + this.currentLongitude);
-            }, 4000);
+                console.log(res);
+                this.kakaoMap();
+            }).catch((err) => {
+                alert(err);
+            })
         },
         kakaoMap(){
+
+            let currentLatitude = this.currentLatitude;
+            let currentLongitude = this.currentLongitude;
+
             // martLocation에 마트 데이터 넣어주기
             this.martLocation = this.martData.towns[this.townLocation]
 
@@ -133,7 +143,34 @@ export default {
                     infowindow.close();
                 }
             }
+
+            // 자기 위치로 변경
+            let currentBtn = document.querySelector('.currentLocation');
+            currentBtn.addEventListener('click', function(){
+                var moveLatLon = new kakao.maps.LatLng(currentLatitude, currentLongitude);
+                // 지도 중심을 부드럽게 이동시킵니다
+                // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+                map.panTo(moveLatLon);
+            })
         },
     }
 }
 </script>
+
+<style scoped>
+.map{
+    position: relative;
+}
+.currentLocation{
+    position: absolute;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    border: 3px solid rgb(205, 205, 205);
+    color: #333;
+    font-weight: 700;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+</style>
