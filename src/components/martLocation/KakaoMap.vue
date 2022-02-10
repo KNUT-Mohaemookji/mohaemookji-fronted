@@ -1,11 +1,13 @@
 <template>
-  <div id="map">
+  <div id="map" class="map">
+      <Loader v-if="loaderState == true" class="loader"/>
       <button class="currentLocation">내 위치</button>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Loader from '../Loader.vue'
 export default {
     data(){
         return{
@@ -16,8 +18,13 @@ export default {
             currentLongitude: 0,
         }
     },
+    components:{
+        Loader
+    },
+    // 자기 위치를 찾기 전까지 지도에 로딩 표시 뜨도록 하기.
     computed: {
-        ...mapState('town', ['martData','townList', 'townLocation'])
+        ...mapState('town', ['martData','townList', 'townLocation']),
+        ...mapState('main', ['loaderState',])
     },
     mounted(){
         this.currentLocation()
@@ -31,7 +38,7 @@ export default {
                 return new Promise((resolve, reject) => {
                     if(navigator.geolocation){
                         navigator.geolocation.getCurrentPosition(function(position){
-                            alert(position.coords.latitude + ' ' + position.coords.longitude);
+                            // alert(position.coords.latitude + ' ' + position.coords.longitude);
                             latitude = position.coords.latitude;
                             longitude = position.coords.longitude;
                             resolve('성공!');
@@ -49,12 +56,16 @@ export default {
                 })
             }
             watchMap()
+            // 위치 찾기에 성공했으면
             .then((res) => {
+                // 현재위치의 위도, 경도를 해당 변수에 넣어주고,
                 this.currentLatitude = latitude;
                 this.currentLongitude = longitude;
                 this.currentLocation();
                 console.log("현재 위치에서 위도는 " + this.currentLatitude + "경도는 : " + this.currentLongitude);
                 console.log(res);
+                // 로딩 이미지를 없애고, kakaoMap을 실행시켜준다.
+                this.$store.commit('main/loaderState');
                 this.kakaoMap();
             }).catch((err) => {
                 alert(err);
@@ -71,8 +82,6 @@ export default {
             var mapContainer = document.getElementById('map');
             var mapOptions = {
                 // 현재위치 적용 완료.
-                // center: new kakao.maps.LatLng(this.currentLatitude, this.currentLongitude),
-                // level: 3
                 center: new kakao.maps.LatLng(36.97119012428337, 127.92837941506313),
                 level: 7
             };
@@ -144,13 +153,19 @@ export default {
                 }
             }
 
-            // 자기 위치로 변경
+            // 내 위치 버튼을 누르면 내위치를 마커로 표시해주고, 지도를 내 위치에 맞게 이동시켜줌.
             let currentBtn = document.querySelector('.currentLocation');
             currentBtn.addEventListener('click', function(){
                 var moveLatLon = new kakao.maps.LatLng(currentLatitude, currentLongitude);
-                // 지도 중심을 부드럽게 이동시킵니다
-                // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
                 map.panTo(moveLatLon);
+                var markerPosition  = new kakao.maps.LatLng(currentLatitude, currentLongitude); 
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
+
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
             })
         },
     }
@@ -171,6 +186,10 @@ export default {
     font-weight: 700;
     right: 0;
     bottom: 0;
+    z-index: 10;
+}
+.loader{
+    position: absolute;
     z-index: 10;
 }
 </style>

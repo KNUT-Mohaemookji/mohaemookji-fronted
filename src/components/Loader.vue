@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
     .spinner-border{
-        position: fixed;
+        /* position: fixed; */
         margin: auto;
         top: 0;
         bottom: 0;
