@@ -51,7 +51,7 @@ export default {
                         });
                     }else{
                         alert('GPS를 지원하지 않습니다.');
-                        reject('실패..')
+                        reject('실패!')
                     }
                 })
             }

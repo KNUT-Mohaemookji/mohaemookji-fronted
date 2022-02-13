@@ -91,7 +91,6 @@ export default {
                         header.style.transition = '.3s'
                     for(var i = 0; i < menuList.length; i++){
                         menuList[i].style.color = "#333";
-                        loginMenuLi[i].style.color = "#333";
                     }
                 }
                 else{
@@ -99,7 +98,6 @@ export default {
                     header.style.transition = '.3s'
                     for(var i = 0; i < menuList.length; i++){
                         menuList[i].style.color = 'rgb(247, 225, 57)';
-                        loginMenuLi[i].style.color = 'rgb(247, 225, 57)';
                     }
                 }
             })
