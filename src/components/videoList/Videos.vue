@@ -170,4 +170,14 @@ export default {
             top: 10px; */
         }
     }
+    @media screen and (max-width: 450px){
+    .videoBoxs{
+        margin-right: 50px;
+        display: block;
+    }
+    .videoBox{
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+}
 </style>

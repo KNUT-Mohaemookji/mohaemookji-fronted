@@ -32,11 +32,11 @@ export default {
 </script>
 
 <style scoped>
-.body{
-    position: fixed;
-    /* position: absolute; */
-    width: 100vw;
-}
+    .body{
+        position: fixed;
+        /* position: absolute; */
+        width: 100vw;
+    }
     .blackBg{
         position: absolute;
         width: 100%;
@@ -61,7 +61,6 @@ export default {
         margin-top: 20px;
         width: 100%;
         aspect-ratio: 16/9;
-        height: 60%;
         border: 1px solid #333;
     }
     .profile{
@@ -83,11 +82,17 @@ export default {
         color: #333;
     }
     @media screen and (max-width: 768px){
+        .blackBg{
+            width: 150%;
+            height: 130vh;
+            background-color: #000;
+            opacity: .5;
+        }
         .container{
             width: 100%;
         }
         .movie{
-            margin-left: 10px;
+             /* margin-left: 10px; */
         }
         .profileImg{
             width: 40px;
@@ -99,6 +104,12 @@ export default {
         }
         .movieDetail{
             font-size: 16px;
+        }
+        @media screen and (max-width: 500px){
+            .container{
+                /* 휴대폰에서 확인해보기.. */
+                margin-left: 8%;
+            }
         }
     }
 </style>

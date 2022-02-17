@@ -103,8 +103,22 @@ export default {
             width: 500px;
         }
         .img{
-            width: 250px;
+            width: 100%;
             height: 125px;
+        }
+        .imgText{
+            font-size: 20px;
+        }
+    }
+    @media screen and (max-width: 500px){
+        .text{
+            font-size: 20px;
+        }
+        .imgs{
+            width: 300px;
+        }
+        .imgText{
+            font-size: 15px;
         }
     }
 </style>
