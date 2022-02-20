@@ -68,11 +68,11 @@ export default {
                 this.$store.commit('main/loaderState');
                 this.kakaoMap();
             }).catch((err) => {
-                alert(err);
+                // 에러 처리해주기 !!!
+                console.log(err);
             })
         },
         kakaoMap(){
-
             let currentLatitude = this.currentLatitude;
             let currentLongitude = this.currentLongitude;
 
@@ -153,7 +153,7 @@ export default {
                 }
             }
 
-            // 내 위치 버튼을 누르면 내위치를 마커로 표시해주고, 지도를 내 위치에 맞게 이동시켜줌.
+            // 내 위치 버튼을 누르면 내 위치를 마커로 표시해주고, 지도를 내 위치에 맞게 이동시켜줌.
             let currentBtn = document.querySelector('.currentLocation');
             currentBtn.addEventListener('click', function(){
                 var moveLatLon = new kakao.maps.LatLng(currentLatitude, currentLongitude);

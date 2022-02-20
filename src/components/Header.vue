@@ -1,8 +1,10 @@
 <template>
   <header class = "header2">
       <div class="container">
-          <img class="logo"
-           src="https://user-images.githubusercontent.com/76980526/148074503-94784be9-47a4-41cc-9fa5-bf88c79b2b18.jpeg" alt="logo">
+          <router-link to="/">
+            <img class="logo"
+            src="https://user-images.githubusercontent.com/76980526/148074503-94784be9-47a4-41cc-9fa5-bf88c79b2b18.jpeg" alt="logo">
+         </router-link>
            <ul class="loginMenu" v-if="menuOpen == false">
                 <li v-for="a,i in loginMenu"  :key="i">
                     <router-link :to="userUrl[i]">{{loginMenu[i]}}</router-link>
@@ -21,10 +23,10 @@
         <div class="mobileMenu">
             <ul>
                 <li v-for="a,i in menuList" :key="i">
-                    {{menuList[i]}}
+                    <router-link :to="mainUrl[i]">{{menuList[i]}}</router-link>
                 </li>
                 <li v-for="a, i in loginMenu" :key="i">
-                    {{loginMenu[i]}}
+                    <router-link :to="userUrl[i]">{{loginMenu[i]}}</router-link>
                 </li>
             </ul>
         </div>
@@ -220,6 +222,15 @@ export default {
         cursor: pointer;
         font-weight: 700;
         margin: 80px 0px;
+    }
+    .mobileMenu ul li:nth-child(5), 
+    .mobileMenu ul li:nth-child(6),
+    .mobileMenu ul li:nth-child(7){
+        margin: 40px 0px;
+        font-size: 15px;
+    }
+    .mobileMenu ul li a{
+        color: #333;
     }
     @media screen and (max-width: 800px){
         .header2{

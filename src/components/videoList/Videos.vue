@@ -98,7 +98,6 @@ export default {
         );
         background-size: 400%;
         animation: shimmer 1500ms infinite;
-        
     }
     .video{
         width: 100%;
@@ -164,10 +163,6 @@ export default {
         .video:hover{
             width: 100%;
             margin-left: 0px;
-        }
-        .footer{
-            /* position: absolute;
-            top: 10px; */
         }
     }
     @media screen and (max-width: 450px){

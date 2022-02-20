@@ -91,9 +91,6 @@ export default {
         .container{
             width: 100%;
         }
-        .movie{
-             /* margin-left: 10px; */
-        }
         .profileImg{
             width: 40px;
             height: 40px;
