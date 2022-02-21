@@ -105,7 +105,7 @@ export default {
         @media screen and (max-width: 500px){
             .container{
                 /* 휴대폰에서 확인해보기.. */
-                margin-left: 8%;
+                /* margin-left: 8%; */
             }
         }
     }

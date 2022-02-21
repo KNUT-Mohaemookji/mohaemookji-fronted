@@ -205,6 +205,7 @@ export default {
     .mobileMenu{
         position: fixed;
         display: none;
+        z-index: 10;
         /* opacity: 0; */
         right: 0;
         width: 25%;
@@ -222,6 +223,7 @@ export default {
         cursor: pointer;
         font-weight: 700;
         margin: 80px 0px;
+        text-decoration-line: none;
     }
     .mobileMenu ul li:nth-child(5), 
     .mobileMenu ul li:nth-child(6),
@@ -257,6 +259,11 @@ export default {
         }
         .loginMenu{
             display: none;
+        }
+    }
+    @media screen and (max-width: 500px){
+        .mobileMenu ul li{
+            font-size: 15px;
         }
     }
 

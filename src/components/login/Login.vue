@@ -3,8 +3,8 @@
       <div class="loginBox">
           <p class="name">Mohaemookji</p>
           <form class="login" action="/login" name="login" method="post">
-            아이디  <input type="text" class="id"/> <br/>
-            비밀번호  <input type="password" class="pw"/> <br/>
+            아이디  <input type="text" class="id" placeholder="아이디를 입력하세요!"/> <br/>
+            비밀번호  <input type="password" class="pw" placeholder="비밀번호를 입력하세요!"/> <br/>
             <br/>
             <input value="로그인" type="submit" class="submit"/>
             <br/><br/>
@@ -122,5 +122,13 @@ export default {
 }
 .join li a:nth-child(3){
     color: rgb(252, 192, 115);
+}
+@media screen and (max-width: 800px){
+    .loginBox{
+        width: 100%;
+    }
+    .kakao, .naver, .submit{
+        font-size: 12px;
+    }
 }
 </style>

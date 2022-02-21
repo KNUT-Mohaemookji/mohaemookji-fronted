@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import store from './store/index.js'
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 

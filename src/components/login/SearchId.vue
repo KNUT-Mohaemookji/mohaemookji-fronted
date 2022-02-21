@@ -53,5 +53,10 @@ export default {
     border-radius: 10px;
     border: 0;
 }
+@media screen and (max-width: 800px){
+    .joinBox{
+        width: 100%;
+    }
+}
 
 </style>
