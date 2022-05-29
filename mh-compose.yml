@@ -1,0 +1,19 @@
+version: '3.8'
+
+# service define
+services:
+# front-end
+ main:
+  image: 2mukee/mh-frontend
+  ports:
+   - 17260:8080
+  environment:
+   - TZ=Asia/Seoul
+  deploy:
+   mode: replicated
+   replicas: 7
+   update_config:
+    parallelism: 7
+    delay: 10s
+    order: start-first
+    failure_action: rollback
