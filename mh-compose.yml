@@ -2,7 +2,6 @@ version: '3.8'
 
 # service define
 services:
-# front-end
  main:
   image: 2mukee/mh-frontend
   ports:
